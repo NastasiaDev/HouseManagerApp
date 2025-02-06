@@ -56,17 +56,19 @@ private extension ListOfObjectsViewController {
 
 private extension ListOfObjectsViewController {
     private func fetchData() {
-        self.networkService.fetchObjects { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case let .success(objects):
-                self.groupedObjects = ObjectDataConverter.groupObjectsByDate(objects)
+        DispatchQueue.global(qos: .background).async {
+            self.networkService.fetchObjects { [weak self] result in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                   // self.hideLoadingIndicator()
+                    switch result {
+                    case let .success(objects):
+                        self.groupedObjects = ObjectDataConverter.groupObjectsByDate(objects)
+                        self.tableView.reloadData()
+                    case let .failure(error):
+                        print("Error fetching data: \(error.localizedDescription)")
+                    }
                 }
-            case let .failure(error):
-                print("Error fetching data: \(error.localizedDescription)")
             }
         }
     }

@@ -74,10 +74,18 @@ final class MainPersonalPageViewController: UIViewController {
     // MARK: - Helper Methods
 
     private func loadUserData() {
-        if let user = userService.loadUser() {
-            self.userNameLabel.text = "\(user.name) \(user.surname)".trimmingCharacters(in: .whitespaces)
-        } else {
-            self.userNameLabel.text = "Гость"
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+
+            let user = self.userService.loadUser()
+
+            DispatchQueue.main.async {
+                if let user = user {
+                    self.userNameLabel.text = "\(user.name) \(user.surname)".trimmingCharacters(in: .whitespaces)
+                } else {
+                    self.userNameLabel.text = "Гость"
+                }
+            }
         }
     }
 }

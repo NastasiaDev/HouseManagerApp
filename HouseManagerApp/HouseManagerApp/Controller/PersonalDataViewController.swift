@@ -35,8 +35,13 @@ final class PersonalDataViewController: UIViewController {
         guard let userData = validateUserTextFieldInput() else { return }
         let user = User(name: userData.name, surname: userData.surname,
                         patronymic: userData.patronymic, phone: userData.phone)
-        self.userService.saveUser(user)
-        performSegue(withIdentifier: "unwindToMain", sender: self)
+        DispatchQueue.global(qos: .background).async {
+               self.userService.saveUser(user)
+               
+               DispatchQueue.main.async {
+                   self.performSegue(withIdentifier: "unwindToMain", sender: self)
+               }
+           }
     }
 
     // MARK: - LifeCycles
