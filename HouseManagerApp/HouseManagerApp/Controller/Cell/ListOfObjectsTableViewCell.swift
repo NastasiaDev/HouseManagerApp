@@ -8,9 +8,10 @@
 import UIKit
 
 final class ListOfObjectsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var nameLabel: UILabel!
+    // MARK: - Outlets
     
+    @IBOutlet var nameLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.nameLabel.textColor = .black

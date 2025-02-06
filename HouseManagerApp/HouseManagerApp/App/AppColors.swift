@@ -8,9 +8,9 @@
 import UIKit
 
 enum AppColors {
-        static let blueMain = UIColor().hex(0x00339C)
-        static let grayBorder = UIColor().hex(0xB2B2B2)
-        static let orangeBtn = UIColor().hex(0xFFBE60)
+    static let blueMain = UIColor().hex(0x00339C)
+    static let grayBorder = UIColor().hex(0xB2B2B2)
+    static let orangeBtn = UIColor().hex(0xFFBE60)
 }
 
 extension UIColor {

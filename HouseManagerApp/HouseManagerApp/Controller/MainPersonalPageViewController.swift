@@ -8,15 +8,22 @@
 import UIKit
 
 final class MainPersonalPageViewController: UIViewController {
+    // MARK: - Properties
 
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var cancelBtn: UIButton!
-    
-    @IBAction func cancelBtn(_ sender: UIButton) {
-    }
-    
+    let userService = UserDefaultsService()
+    private let networkService = NetworkService()
+
+    // MARK: - Outlets
+
+    @IBOutlet var userNameLabel: UILabel!
+    @IBOutlet var backgroundView: UIView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var cancelBtn: UIButton!
+
+    // MARK: - Actions
+
+    @IBAction func cancelBtn(_: UIButton) {}
+
     @IBAction func unwindToMainScreen(_ unwindSegue: UIStoryboardSegue) {
         if let sourceVC = unwindSegue.source as? PersonalDataViewController {
             let name = sourceVC.nameTextField.text ?? "Гость"
@@ -24,15 +31,13 @@ final class MainPersonalPageViewController: UIViewController {
             let patronymic = sourceVC.patronymicNameField.text ?? ""
             let phone = sourceVC.phoneTextField.text ?? ""
 
-            UserDefaults.standard.setValue(name, forKey: "userName")
-            UserDefaults.standard.setValue(surname, forKey: "userSurname")
-            UserDefaults.standard.setValue(patronymic, forKey: "userPatronymic")
-            UserDefaults.standard.setValue(phone, forKey: "userPhone")
-
-            loadUserData()
+            self.userService.saveUser(User(name: name, surname: surname, patronymic: patronymic, phone: phone))
+            self.loadUserData()
         }
     }
-    
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -40,79 +45,83 @@ final class MainPersonalPageViewController: UIViewController {
         self.setupUI()
         self.loadUserData()
     }
-    
-    private func logout() {
-    }
-    
+
+    private func logout() {}
+
+    // MARK: - Segue
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = sender as? IndexPath {
             switch indexPath.row {
             case 0:
                 if segue.identifier == "showObjects",
-                   let detailVC = segue.destination as? ListOfObjectsViewController {
-                }
+                   let _ = segue.destination as? ListOfObjectsViewController {}
             case 1:
                 if segue.identifier == "showDetail",
-                   let personalVC = segue.destination as? PersonalDataViewController {
-                    
-                }
+                   let _ = segue.destination as? PersonalDataViewController {}
             case 2:
                 print("Смена электронной почты")
             case 3:
                 print("Элетронное голосование")
             case 4:
                 print("Выход из аккаунта")
-                break
             default:
                 break
             }
         }
     }
-    
-    private func loadUserData() {
-        let saveName = UserDefaults.standard.string(forKey: "userName") ?? "Гость"
-        let saveSurname = UserDefaults.standard.string(forKey: "userSurname") ?? ""
-        userNameLabel.text = "\(saveName) \(saveSurname)".trimmingCharacters(in: .whitespaces)
-    }
 
+    // MARK: - Helper Methods
+
+    private func loadUserData() {
+        if let user = userService.loadUser() {
+            self.userNameLabel.text = "\(user.name) \(user.surname)".trimmingCharacters(in: .whitespaces)
+        } else {
+            self.userNameLabel.text = "Гость"
+        }
+    }
 }
+
+// MARK: - SetupUI
 
 private extension MainPersonalPageViewController {
     private func setupUI() {
         self.setupCancelBtn()
         self.setupBackgroundView()
     }
-    
+
     private func setupBackgroundView() {
-        backgroundView?.layer.cornerRadius = 10
-        backgroundView?.layer.borderWidth = 1
-        backgroundView?.layer.borderColor = UIColor.systemGray4.cgColor
-        backgroundView?.clipsToBounds = true
-        backgroundView?.backgroundColor = .white
-        backgroundView?.layoutIfNeeded()
+        self.backgroundView?.layer.cornerRadius = 10
+        self.backgroundView?.layer.borderWidth = 1
+        self.backgroundView?.layer.borderColor = UIColor.systemGray4.cgColor
+        self.backgroundView?.clipsToBounds = true
+        self.backgroundView?.backgroundColor = .white
+        self.backgroundView?.layoutIfNeeded()
     }
 
     private func setupCancelBtn() {
-        cancelBtn.layer.backgroundColor = UIColor.white.cgColor
-        cancelBtn.layer.borderColor = UIColor.gray.cgColor
-        cancelBtn.layer.borderWidth = 1
-        cancelBtn.layer.cornerRadius = 8
-        cancelBtn.setTitleColor(UIColor.red, for: .normal)
+        self.cancelBtn.layer.backgroundColor = UIColor.white.cgColor
+        self.cancelBtn.layer.borderColor = UIColor.gray.cgColor
+        self.cancelBtn.layer.borderWidth = 1
+        self.cancelBtn.layer.cornerRadius = 8
+        self.cancelBtn.setTitleColor(UIColor.red, for: .normal)
     }
 }
 
+// MARK: - UITableViewDelegate & UITableViewDataSource
+
 extension MainPersonalPageViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 5
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MainPersonalPageTableViewCell
-        
+
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = selectedView
-        
+
         switch indexPath.row {
         case 0:
             cell.nameLabel.text = "Объекты"
@@ -139,28 +148,28 @@ extension MainPersonalPageViewController: UITableViewDelegate, UITableViewDataSo
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 70
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let segueIdentifiers = [
             "showObjects",
             "showDetail",
             "logout",
             "logout",
-            "logout"
+            "logout",
         ]
-        
+
         let selectedSegue = segueIdentifiers[indexPath.row]
-        
+
         if selectedSegue == "logout" {
-            logout()
+            self.logout()
         } else {
             performSegue(withIdentifier: selectedSegue, sender: indexPath)
         }
-        
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

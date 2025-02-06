@@ -255,6 +255,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0fa-kD-jk5">
+                        <barButtonItem key="backBarButtonItem" title=" " id="F9Y-Ou-KTT"/>
                         <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="xNg-2F-ifj">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
@@ -411,7 +412,7 @@
                             <constraint firstItem="bhc-QK-Esh" firstAttribute="top" secondItem="qid-lN-ZeO" secondAttribute="bottom" constant="33" id="yHa-1v-n7T"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wpF-Jy-rVZ"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="wpF-Jy-rVZ"/>
                     <connections>
                         <outlet property="nameTextField" destination="6hp-aQ-GLJ" id="aKi-6w-tIx"/>
                         <outlet property="patronymicNameField" destination="edu-DB-eJE" id="GND-8S-l02"/>
@@ -482,9 +483,7 @@
                             <constraint firstItem="MEq-Ls-5kF" firstAttribute="leading" secondItem="cjG-gX-uVV" secondAttribute="leading" constant="16" id="qPE-VZ-Alm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uky-99-tdp">
-                        <barButtonItem key="backBarButtonItem" title=" " id="x8r-sO-u5L"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Uky-99-tdp"/>
                     <connections>
                         <outlet property="tableView" destination="PTf-NG-obz" id="SjG-Dp-vU2"/>
                     </connections>
@@ -521,9 +520,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MN1-LH-JlZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Главная" image="key.horizontal.fill" catalog="system" id="GWs-U4-oh5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Qq-Mp-EcR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="chevron.backward" catalog="system" id="7Qq-Mp-EcR">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

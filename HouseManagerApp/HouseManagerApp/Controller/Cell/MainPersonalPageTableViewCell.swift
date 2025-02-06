@@ -9,10 +9,12 @@ import UIKit
 
 final class MainPersonalPageTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var icon: UIImageView!
+    // MARK: - Outlets
     
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var icon: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.nameLabel.textColor = .black
@@ -25,5 +27,4 @@ final class MainPersonalPageTableViewCell: UITableViewCell {
         self.descriptionLabel.text = nil
         self.icon.image = nil
     }
-
 }
