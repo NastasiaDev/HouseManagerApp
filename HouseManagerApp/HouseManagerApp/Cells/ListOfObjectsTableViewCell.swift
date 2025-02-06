@@ -9,12 +9,15 @@ import UIKit
 
 class ListOfObjectsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        nameLabel.textColor = .black
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = nil
     }
-
 }
