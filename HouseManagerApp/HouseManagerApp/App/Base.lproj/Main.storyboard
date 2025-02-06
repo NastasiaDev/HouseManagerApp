@@ -434,58 +434,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PTf-NG-obz">
-                                <rect key="frame" x="16" y="176" width="361" height="544"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ObjectCell." rowHeight="69" id="W5b-NM-s85" customClass="ListOfObjectsTableViewCell" customModule="HouseManagerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="361" height="69"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W5b-NM-s85" id="uQD-Zo-bOt">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="69"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmO-IA-Ldo">
-                                                    <rect key="frame" x="20" y="24" width="50" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="RmO-IA-Ldo" firstAttribute="leading" secondItem="uQD-Zo-bOt" secondAttribute="leadingMargin" id="Q4O-Ky-vHR"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RmO-IA-Ldo" secondAttribute="trailing" constant="20" symbolic="YES" id="fdU-DX-7RX"/>
-                                                <constraint firstItem="RmO-IA-Ldo" firstAttribute="centerY" secondItem="uQD-Zo-bOt" secondAttribute="centerY" id="jaR-ME-QVm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="RmO-IA-Ldo" id="WFy-TV-iBg"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Объекты" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEq-Ls-5kF">
                                 <rect key="frame" x="16" y="123" width="119" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2Eo-gg-Uz1">
+                                <rect key="frame" x="16" y="161" width="361" height="568"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ObjectCell." rowHeight="65" id="umD-KA-LR2" customClass="ListOfObjectsTableViewCell" customModule="HouseManagerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="umD-KA-LR2" id="ECl-kk-LAa">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qF7-zy-Cxc">
+                                                    <rect key="frame" x="20" y="22" width="50" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="qF7-zy-Cxc" id="789-oi-HBR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cjG-gX-uVV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PTf-NG-obz" firstAttribute="top" secondItem="MEq-Ls-5kF" secondAttribute="bottom" constant="20" id="9Vd-9m-Gka"/>
+                            <constraint firstItem="cjG-gX-uVV" firstAttribute="trailing" secondItem="2Eo-gg-Uz1" secondAttribute="trailing" constant="16" id="2P5-ww-cgC"/>
+                            <constraint firstItem="2Eo-gg-Uz1" firstAttribute="leading" secondItem="cjG-gX-uVV" secondAttribute="leading" constant="16" id="7e1-Bt-iu5"/>
                             <constraint firstItem="cjG-gX-uVV" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MEq-Ls-5kF" secondAttribute="trailing" symbolic="YES" id="Cxf-56-LFR"/>
-                            <constraint firstItem="cjG-gX-uVV" firstAttribute="trailing" secondItem="PTf-NG-obz" secondAttribute="trailing" constant="16" id="MvE-O7-oWc"/>
+                            <constraint firstItem="cjG-gX-uVV" firstAttribute="bottom" secondItem="2Eo-gg-Uz1" secondAttribute="bottom" constant="40" id="Z7V-eS-8PU"/>
+                            <constraint firstItem="2Eo-gg-Uz1" firstAttribute="top" secondItem="MEq-Ls-5kF" secondAttribute="bottom" constant="5" id="bxX-mo-7ap"/>
                             <constraint firstItem="MEq-Ls-5kF" firstAttribute="top" secondItem="cjG-gX-uVV" secondAttribute="top" constant="20" id="eC3-oI-nAX"/>
-                            <constraint firstItem="cjG-gX-uVV" firstAttribute="bottom" secondItem="PTf-NG-obz" secondAttribute="bottom" constant="49" id="fKX-8f-tfi"/>
-                            <constraint firstItem="PTf-NG-obz" firstAttribute="leading" secondItem="cjG-gX-uVV" secondAttribute="leading" constant="16" id="maj-kB-xOa"/>
                             <constraint firstItem="MEq-Ls-5kF" firstAttribute="leading" secondItem="cjG-gX-uVV" secondAttribute="leading" constant="16" id="qPE-VZ-Alm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uky-99-tdp"/>
                     <connections>
-                        <outlet property="tableView" destination="PTf-NG-obz" id="SjG-Dp-vU2"/>
+                        <outlet property="tableView" destination="2Eo-gg-Uz1" id="UKq-Sc-u82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0I9-FR-WZ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
