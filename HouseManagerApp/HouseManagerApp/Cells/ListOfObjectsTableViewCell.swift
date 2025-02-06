@@ -7,17 +7,17 @@
 
 import UIKit
 
-class ListOfObjectsTableViewCell: UITableViewCell {
+final class ListOfObjectsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel.textColor = .black
+        self.nameLabel.textColor = .black
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        nameLabel.text = nil
+        self.nameLabel.text = nil
     }
 }

@@ -17,11 +17,28 @@ final class MainPersonalPageViewController: UIViewController {
     @IBAction func cancelBtn(_ sender: UIButton) {
     }
     
+    @IBAction func unwindToMainScreen(_ unwindSegue: UIStoryboardSegue) {
+        if let sourceVC = unwindSegue.source as? PersonalDataViewController {
+            let name = sourceVC.nameTextField.text ?? "Гость"
+            let surname = sourceVC.surnameField.text ?? ""
+            let patronymic = sourceVC.patronymicNameField.text ?? ""
+            let phone = sourceVC.phoneTextField.text ?? ""
+
+            UserDefaults.standard.setValue(name, forKey: "userName")
+            UserDefaults.standard.setValue(surname, forKey: "userSurname")
+            UserDefaults.standard.setValue(patronymic, forKey: "userPatronymic")
+            UserDefaults.standard.setValue(phone, forKey: "userPhone")
+
+            loadUserData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.setupUI()
+        self.loadUserData()
     }
     
     private func logout() {
@@ -51,6 +68,12 @@ final class MainPersonalPageViewController: UIViewController {
             }
         }
     }
+    
+    private func loadUserData() {
+        let saveName = UserDefaults.standard.string(forKey: "userName") ?? "Гость"
+        let saveSurname = UserDefaults.standard.string(forKey: "userSurname") ?? ""
+        userNameLabel.text = "\(saveName) \(saveSurname)".trimmingCharacters(in: .whitespaces)
+    }
 
 }
 
@@ -59,6 +82,7 @@ private extension MainPersonalPageViewController {
         self.setupCancelBtn()
         self.setupBackgroundView()
     }
+    
     private func setupBackgroundView() {
         backgroundView?.layer.cornerRadius = 10
         backgroundView?.layer.borderWidth = 1
@@ -67,7 +91,7 @@ private extension MainPersonalPageViewController {
         backgroundView?.backgroundColor = .white
         backgroundView?.layoutIfNeeded()
     }
-    
+
     private func setupCancelBtn() {
         cancelBtn.layer.backgroundColor = UIColor.white.cgColor
         cancelBtn.layer.borderColor = UIColor.gray.cgColor

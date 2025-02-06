@@ -15,15 +15,15 @@ final class MainPersonalPageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel.textColor = .black
-        descriptionLabel.textColor = .gray
+        self.nameLabel.textColor = .black
+        self.descriptionLabel.textColor = .gray
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        nameLabel.text = nil
-        descriptionLabel.text = nil
-        icon.image = nil
+        self.nameLabel.text = nil
+        self.descriptionLabel.text = nil
+        self.icon.image = nil
     }
 
 }
