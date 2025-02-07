@@ -62,7 +62,7 @@ final class MainPersonalPageViewController: UIViewController {
             case 2:
                 print("Смена электронной почты")
             case 3:
-                print("Элетронное голосование")
+                print("Электронное голосование")
             case 4:
                 print("Выход из аккаунта")
             default:
